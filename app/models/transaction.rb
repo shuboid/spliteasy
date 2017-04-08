@@ -11,7 +11,6 @@ class Transaction
   field :amount, type: Float, default: 0
 
   #association
-  belongs_to :event
   belongs_to :payee, class_name: 'User', inverse_of: :payment_from
   belongs_to :payer, class_name: 'User', inverse_of: :payment_to
 

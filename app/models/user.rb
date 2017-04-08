@@ -5,6 +5,8 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :add_to_friend_list
+
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
@@ -50,4 +52,23 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  def get_balance_sheet
+    data = {}
+    self.payment_from.each do |transaction|
+      data[transaction.payee_id.to_s] ||= 0.0
+      data[transaction.payee_id.to_s] += transaction.amount
+    end
+    self.payment_to.each do |transaction|
+      data[transaction.payer_id.to_s] ||= 0.0
+      data[transaction.payer_id.to_s] -= transaction.amount
+    end
+    data
+  end
+
+  def add_to_friend_list
+    self.friend_ids << self.id
+    self.save
+  end
+
 end

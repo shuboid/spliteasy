@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="panel-title"> Profile </h3>
+    </div>
+    <div class="panel-body">
+      <div class=" row col-md-12">
+        <form>
+          <input type="text" value="<%= @user.name%>" name="user[name]">
+          <input type="text" value="<%= @user.email%>" name="user[email]" disabled>
+          <select id="friend-list">
+            <option></option>
+          </select>
+          <button class="btn btn-default" id="add-friend" type="submit">Add Friend</button>
+        </form>
+      </div>
+
+      <div class="row">
+        <table class="table table-bordered text-center">
+          <tr>
+            <th> Name </th>
+            <th> Email </th>
+          </tr>
+          <% @friend_list.each do |friend| %>
+            <tr>
+              <td> <%= friend.name %> </td>
+              <td> <%= friend.email %> </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $(function(){
+    User.initialize();
+  });
+<% end %>

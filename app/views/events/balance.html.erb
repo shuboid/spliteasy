@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="panel-title"> Balance Sheet </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <table class="table table-bordered text-center">
+          <tr>
+            <th> Name </th>
+            <th> Total Amount </th>
+          </tr>
+          <% @friend_balance_sheet.each do |id, balance| %>
+            <tr>
+              <td> <%= User.find(id).name %> </td>
+              <td>
+                <% if (balance < 0) %>
+                  <% css_class = 'text-danger' %>
+                <% else %>
+                  <% css_class = 'text-success' %>
+                <% end %>
+                <p class="<%= css_class%>"> <b> <%= balance %> </b> </p>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <hr>
+      <div class="row text-center">
+        <h4>Make Transcation</h4>
+        <form method="post" action="<%= add_transction_users_path %>">
+          <select id="payer" name="payer">
+            <option></option>
+          </select>
+          <select id="payee" name="payee">
+            <option></option>
+          </select>
+          <input  type="number" name="amount">
+          <button class="btn btn-submit"> Make Payment </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<%= javascript_tag do %>
+  $(function(){
+    Balance.initialize();
+  });
+<% end %>

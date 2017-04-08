@@ -34,28 +34,23 @@
     <label>Name</label>
     <input  class= "form-control" name="event[name]"></input>
     <label>Location</label>
-    <input   class= "form-control" name="event[name]"></input>
+    <input   class= "form-control" name="event[location]"></input>
     <label>Members</label>
-    <select multiple="multiple" class="form-control">
-      <option>Shubham</option>
-      <option>Sanket</option>
-      <option>Sameer</option>
-    </select>
+    <select multiple="multiple" id="event-member" class="form-control" name="event[user_ids][]"> </select>
     <label>Total Amount</label>
-    <input  type="number" class= "form-control" name="event[name]"></input>
+    <input  type="number" class= "form-control" name="event[total_amount]"></input>
   </div>
   <label>Payments</label>
-  <div class="btn  btn-default fa fa-plus">Add Payment</div>
-  <div>
-    <select type="" name="" class="form-control col-sm-1">
-      <option>Shubham</option>
-        <option>Sanket</option>
-        <option>Sameer</option>
-    </select>
-    <input class="form-control" type="" name="">
-  </div>
-  <div>
-    <div class="btn btn-primary pull-right" id="create-event"> Create</div>
-  </div>
-  </form>
+  <div class="btn add-payment btn-default fa fa-plus">Add Payment</div>
+    <div id="payments"> </div>
+      <div>
+        <div class="btn btn-primary pull-right" id="create-event"> Create</div>
+      </div>
+    </form>
 </div>
+
+<%= javascript_tag do %>
+  $(function(){
+    Events.initialize();
+  });
+<% end %>

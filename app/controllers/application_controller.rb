@@ -1,3 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+
+
+  def load_user
+    if current_user
+      @user =  current_user
+    end
+  end
 end

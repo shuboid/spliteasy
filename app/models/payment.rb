@@ -9,6 +9,8 @@ class Payment
   belongs_to :event
   belongs_to :user
 
+  has_many :transaction
+
   #Validation
   validates_presence_of :amount
 

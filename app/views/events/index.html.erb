@@ -1,0 +1,61 @@
+<div class = "col-lg-9">
+  <label class="label"> Previous Events </label>
+  <div>
+    <table class="table">
+      <tr>
+        <th>Event Name</th>
+        <th>Location</th>
+        <th>Total Amount</th>
+        <th>Members</th>
+      </tr>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%=  event.name %></td>
+          <td><%=  event.location %></td>
+          <td><%=  event.total_amount %></td>
+          <td>Members</td>
+        </tr>
+
+      <% end %>
+    </table>
+  </div>
+
+
+</div>
+<div class="col-lg-3">
+  <form class="form">
+  <div class="panel">
+  <div class="panel-heading">
+    <div class="panel-title">
+      <h4 class=> Create event </h4>
+    </div>
+  </div>
+  <div class="panel-body">
+    <label>Name</label>
+    <input  class= "form-control" name="event[name]"></input>
+    <label>Location</label>
+    <input   class= "form-control" name="event[name]"></input>
+    <label>Members</label>
+    <select multiple="multiple" class="form-control">
+      <option>Shubham</option>
+      <option>Sanket</option>
+      <option>Sameer</option>
+    </select>
+    <label>Total Amount</label>
+    <input  type="number" class= "form-control" name="event[name]"></input>
+  </div>
+  <label>Payments</label>
+  <div class="btn  btn-default fa fa-plus">Add Payment</div>
+  <div>
+    <select type="" name="" class="form-control col-sm-1">
+      <option>Shubham</option>
+        <option>Sanket</option>
+        <option>Sameer</option>
+    </select>
+    <input class="form-control" type="" name="">
+  </div>
+  <div>
+    <div class="btn btn-primary pull-right" id="create-event"> Create</div>
+  </div>
+  </form>
+</div>

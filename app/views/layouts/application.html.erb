@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Spliteasy</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Split Easy</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if flash[:error_message].present? %>
+    <div class="alert alert-danger"><%= flash[:error_message] %></div>
+<%elsif flash[:success_message].present?%>
+  <div class="alert alert-success"><%= flash[:success_message] %></div>
+<% end %>
+<%=render partial:"layouts/navbar" %>
+<%= yield %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+</body>
 </html>

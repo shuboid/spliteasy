@@ -14,7 +14,7 @@ class Event
 
 
   has_and_belongs_to_many :users
-  has_many :transaction
+  has_many :payments
 
 
 
